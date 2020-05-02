@@ -24,12 +24,12 @@ $(document).ready(function () {
 
       // Checks if current hour relative to hour blocks is past, present, future
 
-      if (currentHour > hourNum){
+      if (currentHour > hourNum) {
         ppf = "past"
-      } 
+      }
       if (currentHour < hourNum) {
         ppf = "future"
-      } 
+      }
       if (currentHour === hourNum) {
         ppf = "present"
       }
@@ -46,7 +46,7 @@ $(document).ready(function () {
   }
 
   // Save inputs to localStorage on click 
-  $(".saveBtn").on("click", function() {
+  $(".saveBtn").on("click", function () {
     event.preventDefault();
     var thisHour = $(this).attr("data-hour")
     var thisDay = $(this).attr("data-day")
@@ -62,21 +62,21 @@ $(document).ready(function () {
   });
 
   // Load Tasks
-  function loadTasks () {
+  function loadTasks() {
     var storedSavedTasks = JSON.parse(localStorage.getItem("tasks"));
-    if (storedSavedTasks !== null){
+    if (storedSavedTasks !== null) {
       savedTasks = storedSavedTasks;
       renderTasks();
     }
   }
 
-// Render saved Tasks
+  // Render saved Tasks
   function renderTasks() {
     for (var i = 0; i < savedTasks.length; i++) {
-      var getDay =  savedTasks[i].saveDay;
+      var getDay = savedTasks[i].saveDay;
       var getHour = savedTasks[i].saveHour;
       var getTask = savedTasks[i].saveTask;
-      if (today === getDay){
+      if (today === getDay) {
         $(`.description[data-hour='${getHour}'`).text(getTask);
       }
     }
@@ -91,4 +91,3 @@ $(document).ready(function () {
     localStorage.clear();
   });
 });
-
