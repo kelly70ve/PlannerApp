@@ -1,17 +1,19 @@
-
+var savedTasks = [];
 $(document).ready(function () {
   var today = moment().format('dddd, MMMM Do');
   var currentHour = parseInt(moment().format("HH"));
   var workDay = 12;
   var ppf = ""
-  var savedTasks = [];
 
+  
+  loadTimes();
   // Initialize page: 
+  init();
   // load day at top of page
   $("#currentDay").text(today);
 
   // Load Time Blocks
-  loadTimes();
+  
 
   // Create Time Blocks
   function loadTimes() {
@@ -60,21 +62,23 @@ $(document).ready(function () {
     localStorage.setItem("tasks", JSON.stringify(savedTasks))
   });
 
-  // initialize
-  // funcion init() {
-  //   var storedSavedTasks
-  // }
+  // Initialize
+  function init () {
+    var storedSavedTasks = JSON.parse(localStorage.getItem("tasks"));
+    if (storedSavedTasks !== null){
+      savedTasks = storedSavedTasks;
+      renderTasks();
+    }
+  }
 
-
-
-
-
-
-
-
-
-
+// Render saved Tasks
+  function renderTasks() {
+    $(".description").text("")
+    for (var i = 0; i < savedTasks.length; i++) {
+      var getHour = savedTasks[i].saveHour;
+      var getTask = savedTasks[i].saveTask;
+      $(`.description[data-hour='${getHour}'`).text(getTask);
+    }
+  }
 });
 
-// save newly inputed information
-// localStorage saved info
