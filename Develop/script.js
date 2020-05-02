@@ -5,15 +5,12 @@ $(document).ready(function () {
   var workDay = 12;
   var ppf = ""
 
-  
-  loadTimes();
-  // Initialize page: 
-  init();
-  // load day at top of page
-  $("#currentDay").text(today);
-
   // Load Time Blocks
-  
+  loadTimes();
+  // Load saved task 
+  loadTasks();
+  // load day at day at top of page
+  $("#currentDay").text(today);
 
   // Create Time Blocks
   function loadTimes() {
@@ -62,8 +59,8 @@ $(document).ready(function () {
     localStorage.setItem("tasks", JSON.stringify(savedTasks))
   });
 
-  // Initialize
-  function init () {
+  // Load Tasks
+  function loadTasks () {
     var storedSavedTasks = JSON.parse(localStorage.getItem("tasks"));
     if (storedSavedTasks !== null){
       savedTasks = storedSavedTasks;
@@ -73,12 +70,20 @@ $(document).ready(function () {
 
 // Render saved Tasks
   function renderTasks() {
-    $(".description").text("")
     for (var i = 0; i < savedTasks.length; i++) {
       var getHour = savedTasks[i].saveHour;
       var getTask = savedTasks[i].saveTask;
       $(`.description[data-hour='${getHour}'`).text(getTask);
     }
   }
+
+  // Clear Tasks
+  $("#clear").on("click", function () {
+    for (var i = 0; i < savedTasks.length; i++) {
+      var getHour = savedTasks[i].saveHour;
+      $(`.description[data-hour='${getHour}'`).text("");
+    }
+    localStorage.clear();
+  });
 });
 
