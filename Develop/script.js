@@ -8,7 +8,7 @@ $(document).ready(function () {
 
   // fill in times from 6AM to 6PM
 
-  var workDay = 24;
+  var workDay = 12;
 
   // Create Time Blocks
   function loadTimes() {
@@ -17,7 +17,7 @@ $(document).ready(function () {
       var hour = moment().hour(6);
       hour = hour.add(i, 'h')
 
-      var hourString = hour.format("hA");
+      var hourString = hour.format("h A");
       var hourNum = parseInt(hour.format("HH"));
 
       var ppf = ""
@@ -34,12 +34,11 @@ $(document).ready(function () {
         ppf = "present"
       }
 
-
       // Create hour El 
       var rowEl = $("<div>").addClass("row time-block");
-      var hourEl = $("<div>").addClass("col-1 hour").text(hourString).css("vertical-align", "middle");
+      var hourEl = $("<div>").addClass("pt-3 col-1 hour d-flex justify-content-center").text(hourString);
       // will need to dynamically fill past or future *** 
-      var textEl = $("<textarea>").addClass("col-10 description " + ppf);
+      var textEl = $("<textarea>").addClass("col-9 description " + ppf);
       var buttonEl = $("<button>").addClass("col-1 saveBtn d-flex justify-content-center").append($("<i>").addClass("fas fa-save"));
 
       // Append Elements
