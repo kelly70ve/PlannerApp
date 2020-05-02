@@ -4,6 +4,18 @@ $(document).ready(function(){
   var today = moment().format('dddd, MMMM Do');
   
   // load day at top of page
+  $("#currentDay").text(today);
+
+  // fill in times from 6AM to 6PM
+
+  var workDay = 12;
+  var hours = []
+
+  for (var i = 0; i < workDay + 1; i ++) {
+    var startHour = moment().hour(6);
+    hours.push(startHour.add(i, 'h').format("hA"));
+  }
+
 
 
 
