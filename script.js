@@ -76,6 +76,7 @@ $(document).ready(function () {
       var getDay = savedTasks[i].saveDay;
       var getHour = savedTasks[i].saveHour;
       var getTask = savedTasks[i].saveTask;
+      // tasks will only persist per day
       if (today === getDay) {
         $(`.description[data-hour='${getHour}'`).text(getTask);
       }
