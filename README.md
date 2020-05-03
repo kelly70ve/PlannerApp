@@ -4,7 +4,7 @@ This is a simple calendar application that allows the user to save events for ea
 
 This project has utalized the [Moment.js](https://momentjs.com/) library to work with date and time. 
 
-This project has been completed with no known bugs and can be viewed [here](). The project is responsive and can be viewed on mobile, tablet or desktop.
+This project has been completed with no known bugs and can be viewed [here](https://kelly70ve.github.io/PlannerApp/). The project is responsive and can be viewed on mobile, tablet or desktop.
 
 ---
 
